@@ -12,28 +12,38 @@ import sys
 # The function is expected to return an INTEGER.
 # The function accepts STRING s as parameter.
 #
-import numpy as np
+
+def fltr(num):
+	if num >= 2:
+		return num
+	
+	return
+
 def sherlockAndAnagrams(s):
-	map = {}
+	res = 0
+	arr = {}
 	for i in range(len(s)):
 		for j in range(len(s) - i):
 			s1 = ''.join(sorted(s[j:j + i + 1]))
-			map[s1] = map.get(s1, 0) + 1
-	vals = np.unique((np.array(list(map.values())) >= 2),  return_counts=True)
-	print(vals[1][1])
+			arr[s1] = arr.get(s1, 0) + 1
+
+	for e in arr:
+		res += int(arr[e]*(arr[e]-1)/2)
+		
+	
+	return res
 
 if __name__ == '__main__':
 	# fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
 	# q = int(input().strip())
 
-	# for q_itr in range(q):
-	# s = input()
+	for q_itr in ['abba', 'abcd']:
+		# s = input()
 
-	# result = 
-	# sherlockAndAnagrams('ifailuhkqq')
-	sherlockAndAnagrams('kkkk')
-
-	# fptr.write(str(result) + '\n')
+		result = sherlockAndAnagrams(q_itr)
+		
+		print(result)
+	#     fptr.write(str(result) + '\n')
 
 	# fptr.close()

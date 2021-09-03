@@ -4,11 +4,17 @@ import random
 import re
 import sys
 
+from collections import Counter
+
 def checkMagazine(magazine, note):
-	truthTable = [True if magazine.count(item) >= note.count(item) else False for item in set(sorted(note))]
-	print(set(sorted(note)))
-	print(truthTable)
-	print('No' if False in truthTable else 'Yes')
+	# truthTable = [True if magazine.count(item) >= note.count(item) else False for item in set(sorted(note))]
+	# print(set(sorted(note)), '\n', set(magazine))
+	# res = list(dict(magazine).fromkeys(note))
+	a = Counter(magazine)
+	b = Counter(note)
+
+
+	print("Yes" if ( a & b ) == b else "No")
 	
 if __name__ == '__main__':
 	'''
